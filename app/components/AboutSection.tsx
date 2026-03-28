@@ -6,8 +6,8 @@ import doctorAbout from "@/app/assets/about/doctor-about.png";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative w-full py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative w-full py-16 sm:py-24 min-h-[100dvh] flex flex-col justify-center">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ─── About Us header — above card, aligned with left edge ─── */}
         <div className="mb-6 sm:mb-8" style={{ paddingLeft: "60px" }}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#211F1F]">

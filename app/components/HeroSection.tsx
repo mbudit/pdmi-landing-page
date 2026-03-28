@@ -69,8 +69,8 @@ export default function HeroSection() {
   }, [activeIndex, goTo]);
 
   return (
-    <section id="home" className="relative w-full pt-24 pb-12 sm:pt-28 sm:pb-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="home" className="relative w-full pt-24 pb-12 sm:pt-28 sm:pb-16 min-h-[100dvh] flex flex-col justify-center">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ─── Card Container (allows top overflow for doctor pop-out) ─── */}
         <div
           className="relative w-full rounded-2xl sm:rounded-3xl shadow-lg"
