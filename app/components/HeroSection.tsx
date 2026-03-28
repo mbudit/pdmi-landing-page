@@ -119,12 +119,12 @@ export default function HeroSection() {
                 </div>
 
                 {/* Doctor — pos: bottom right */}
-                <div className="absolute right-0 sm:right-[2%] bottom-0 h-[60%] sm:h-[120%] w-[95%] sm:w-[40%] z-20">
+                <div className="absolute right-0 sm:right-[1%] bottom-0 h-[60%] sm:h-[125%] w-[100%] sm:w-[50%] z-20 pointer-events-none">
                   <Image
                     src={slide.doctor}
                     alt={slide.alt}
                     fill
-                    sizes="(max-width: 640px) 95vw, 40vw"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-contain object-bottom-right sm:object-bottom"
                     priority={idx === 0}
                   />
