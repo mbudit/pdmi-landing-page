@@ -16,6 +16,44 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = "";
+      
+      for (const link of navLinks) {
+        const id = link.href.substring(1); // Remove the '#'
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // 120px offset to account for the sticky navbar.
+          // Since we iterate in order, this correctly finds the lowest element
+          // that has scrolled past the threshold.
+          if (rect.top <= 120) {
+            current = id;
+          }
+        }
+      }
+      
+      // Handle the case where user has scrolled to the absolute bottom of the page
+      if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 50) {
+        const lastLink = navLinks[navLinks.length - 1]; // Contact
+        if (document.getElementById(lastLink.href.substring(1))) {
+           current = lastLink.href.substring(1);
+        }
+      }
+      
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    handleScroll(); // Initial check
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -62,18 +100,25 @@ export default function Navbar() {
 
         {/* ─── Desktop Links ─── */}
         <ul className="hidden items-center gap-1 md:flex" role="list">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-muted
-                           transition-colors duration-200 rounded-lg
-                           hover:text-foreground hover:bg-surface-hover"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setActiveSection(link.href.substring(1))}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg group
+                             hover:text-foreground hover:bg-surface-hover
+                             ${isActive ? "text-[#1367E1]" : "text-muted"}`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 h-[2px] w-[60%] -translate-x-1/2 rounded-t-full bg-[#1367E1]" />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* ─── CTA Button (Desktop) ─── */}
@@ -163,23 +208,32 @@ export default function Navbar() {
           `}
         >
           <ul className="flex flex-col gap-1" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-muted
-                             transition-colors duration-200
-                             hover:bg-surface-hover hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setActiveSection(link.href.substring(1));
+                    }}
+                    className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors duration-200
+                               hover:bg-surface-hover hover:text-foreground relative overflow-hidden
+                               ${isActive ? "text-[#1367E1] bg-[#1367E1]/10" : "text-muted"}`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <span className="absolute left-0 top-1/2 h-1/2 w-[3px] -translate-y-1/2 rounded-r-full bg-[#1367E1]" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <div className="mt-4 pt-4 border-t border-border-subtle">
             <Link
-              href="#contact"
+              href="#booking"
               onClick={() => setMobileOpen(false)}
               className="flex w-full items-center justify-center gap-2 rounded-full
                          px-5 py-3 text-sm font-semibold text-white
@@ -188,7 +242,7 @@ export default function Navbar() {
                 background: "linear-gradient(135deg, var(--accent), #7c3aed)",
               }}
             >
-              Get Started
+              Make Appointment
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="14"

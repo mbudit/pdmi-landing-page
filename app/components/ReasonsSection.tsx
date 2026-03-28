@@ -77,7 +77,7 @@ export default function ReasonsSection() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* ─── Left side — Text Content & List ─── */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center order-2 lg:order-1">
             {/* Title */}
             <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold text-[#211F1F] mb-10 sm:mb-12">
               Reasons to Choose Our{" "}
@@ -85,22 +85,22 @@ export default function ReasonsSection() {
             </h2>
 
             {/* Features List */}
-            <div className="flex flex-col gap-5 sm:gap-6">
+            <div className="flex flex-col gap-4 sm:gap-6">
               {reasons.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 
-                             rounded-[2rem] bg-[#F4F4F4] p-5 sm:p-6 sm:pr-8
+                  className="flex flex-row items-center sm:items-center gap-4 sm:gap-6 
+                             rounded-[1.5rem] sm:rounded-[2rem] bg-[#F4F4F4] p-4 sm:p-6 sm:pr-8
                              transition-all duration-300 hover:shadow-md border border-transparent hover:border-gray-200"
                 >
-                  <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
+                  <div className="flex h-14 w-14 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-[#211F1F]">
+                    <h3 className="text-base sm:text-xl font-bold text-[#211F1F]">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm sm:text-base text-[#6b7280] leading-relaxed max-w-md">
+                    <p className="mt-1 sm:mt-2 text-xs sm:text-base text-[#6b7280] leading-relaxed max-w-md">
                       {item.description}
                     </p>
                   </div>
@@ -110,9 +110,9 @@ export default function ReasonsSection() {
           </div>
 
           {/* ─── Right side — Doctor image with union ─── */}
-          <div className="relative w-full h-[500px] lg:h-auto lg:min-h-[600px] mt-10 lg:mt-0">
+          <div className="relative w-full h-[350px] sm:h-[500px] lg:h-auto lg:min-h-[600px] mt-6 sm:mt-10 lg:mt-0 pointer-events-none order-1 lg:order-2">
             {/* Union shape — centered bottom behind doctor */}
-            <div className="absolute right-0 bottom-0 h-full w-[100%] z-0">
+            <div className="absolute right-0 bottom-0 h-[90%] lg:h-full w-[100%] z-0">
               <Image
                 src={union2}
                 alt=""
@@ -124,7 +124,7 @@ export default function ReasonsSection() {
             </div>
 
             {/* Doctor image — bottom aligned, fills more space */}
-            <div className="absolute -right-[5%] bottom-0 h-[120%] w-[110%] z-10">
+            <div className="absolute right-0 lg:-right-[5%] bottom-0 h-[100%] lg:h-[120%] w-[100%] lg:w-[110%] z-10">
               <Image
                 src={doctor5}
                 alt="Friendly Doctor"

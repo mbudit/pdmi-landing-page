@@ -73,8 +73,7 @@ export default function HeroSection() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ─── Card Container (allows top overflow for doctor pop-out) ─── */}
         <div
-          className="relative w-full rounded-2xl sm:rounded-3xl shadow-lg"
-          style={{ aspectRatio: "16 / 7" }}
+          className="relative w-full rounded-[2rem] sm:rounded-[60px] shadow-lg min-h-[600px] sm:min-h-[450px] md:min-h-0 md:aspect-[16/7]"
         >
           {/* ─── Slides ─── */}
           {heroSlides.map((slide, idx) => {
@@ -93,40 +92,40 @@ export default function HeroSection() {
               >
                 {/* Background + union (clipped to card shape) */}
                 <div
-                  className="absolute inset-0 w-full h-full overflow-hidden rounded-2xl sm:rounded-3xl"
+                  className="absolute inset-0 w-full h-full overflow-hidden rounded-[2rem] sm:rounded-[60px]"
                   style={{ backgroundColor: slide.bg }}
                 >
-                  {/* Text content — left side */}
-                  <div className="absolute inset-0 z-10 flex flex-col justify-center px-8 sm:px-12 lg:px-16 max-w-[55%]">
+                  {/* Text content — top on mobile, left on desktop */}
+                  <div className="absolute inset-x-0 top-0 sm:inset-y-0 sm:left-0 z-10 flex flex-col justify-start sm:justify-center px-6 pt-10 sm:pt-0 sm:px-12 lg:px-16 w-full sm:max-w-[55%]">
                     <p className="text-white/80 text-sm sm:text-base lg:text-lg font-light italic mb-2 sm:mb-4">
                       {slide.subtitle}
                     </p>
-                    <h2 className="text-white text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight whitespace-pre-line">
+                    <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight whitespace-pre-line">
                       {slide.title}
                     </h2>
                   </div>
 
                   {/* Union shape — right side, centered behind doctor */}
-                  <div className="absolute right-[5%] top-[10%] h-[80%] w-[38%] sm:w-[35%]">
+                  <div className="absolute right-0 sm:right-[5%] bottom-[5%] sm:top-[10%] h-[55%] sm:h-[80%] w-[90%] sm:w-[35%] opacity-80 sm:opacity-100">
                     <Image
                       src={slide.union}
                       alt=""
                       fill
-                      sizes="35vw"
-                      className="object-contain object-right"
+                      sizes="(max-width: 640px) 90vw, 35vw"
+                      className="object-contain object-right-bottom sm:object-right"
                       aria-hidden="true"
                     />
                   </div>
                 </div>
 
-                {/* Doctor — pops out above the card */}
-                <div className="absolute right-[2%] bottom-0 h-[120%] w-[42%] sm:w-[40%] z-20">
+                {/* Doctor — pos: bottom right */}
+                <div className="absolute right-0 sm:right-[2%] bottom-0 h-[60%] sm:h-[120%] w-[95%] sm:w-[40%] z-20">
                   <Image
                     src={slide.doctor}
                     alt={slide.alt}
                     fill
-                    sizes="40vw"
-                    className="object-contain object-bottom"
+                    sizes="(max-width: 640px) 95vw, 40vw"
+                    className="object-contain object-bottom-right sm:object-bottom"
                     priority={idx === 0}
                   />
                 </div>
@@ -135,20 +134,20 @@ export default function HeroSection() {
           })}
 
           {/* ─── Bottom-left button + indicators ─── */}
-          <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 flex items-center gap-4">
+          <div className="absolute top-[160px] left-6 sm:top-auto sm:bottom-10 sm:left-12 lg:left-16 z-30 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
             <a
               href="#booking"
-              className="inline-flex items-center gap-2 rounded-full
-                         bg-white px-5 py-2.5 sm:px-7 sm:py-3
+              className="inline-flex items-center gap-2 rounded-[20px] sm:rounded-full
+                         bg-white px-6 py-3 sm:px-8 sm:py-4
                          text-sm sm:text-base font-semibold text-[#075EE0]
-                         shadow-md transition-all duration-200
+                         shadow-[0_8px_20px_rgba(0,0,0,0.12)] transition-all duration-200
                          hover:shadow-xl hover:scale-[1.03] active:scale-[0.97]"
             >
               Make Appointment
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -172,8 +171,8 @@ export default function HeroSection() {
                   className={`
                     h-2.5 rounded-full transition-all duration-300
                     ${idx === activeIndex || (fading && idx === nextIndex)
-                      ? "w-7 bg-white"
-                      : "w-2.5 bg-white/50 hover:bg-white/70"
+                      ? "w-8 bg-white"
+                      : "w-2.5 bg-white/50 hover:bg-white/80"
                     }
                   `}
                 />
@@ -185,3 +184,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

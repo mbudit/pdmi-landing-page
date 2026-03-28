@@ -5,7 +5,7 @@ import doctorExpert from "@/app/assets/doctors/doctor-expert.png";
 
 export default function DoctorsSection() {
   return (
-    <section id="doctors" className="relative w-full py-16 sm:py-24 min-h-[100dvh] flex flex-col justify-center">
+    <div id="doctors" className="relative w-full pb-8 pt-16 sm:pb-12 sm:pt-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* ─── Left side — Doctor image with union ─── */}
@@ -112,6 +112,6 @@ export default function DoctorsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -13,8 +13,10 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <DoctorsSection />
-      <OtherDoctorsSection />
+      <section className="relative w-full min-h-[100dvh] flex flex-col justify-center">
+        <DoctorsSection />
+        <OtherDoctorsSection />
+      </section>
       <ReasonsSection />
       <BookingSection />
       <TestimonialsSection />

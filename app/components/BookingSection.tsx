@@ -29,11 +29,11 @@ export default function BookingSection() {
     <section id="booking" className="relative w-full py-16 sm:py-24 min-h-[100dvh] flex flex-col justify-center">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-          className="relative flex flex-col xl:flex-row overflow-hidden rounded-[3rem] sm:rounded-[4rem]"
+          className="relative flex flex-col xl:flex-row overflow-hidden rounded-[2rem] sm:rounded-[4rem]"
           style={{ backgroundColor: "#0A6EFF" }}
         >
           {/* Main Content Area */}
-          <div className="flex flex-1 flex-col lg:flex-row p-10 sm:p-16 lg:p-20 gap-16 lg:gap-24">
+          <div className="flex flex-1 flex-col lg:flex-row p-6 sm:p-16 lg:p-20 gap-10 sm:gap-16 lg:gap-24">
             
             {/* ─── Left Column — Text & Form ─── */}
             <div className="flex flex-col justify-center flex-1 max-w-xl">
@@ -43,21 +43,21 @@ export default function BookingSection() {
                 book an appointment.
               </h2>
 
-              <form className="mt-12 flex flex-col gap-6">
+              <form className="mt-8 sm:mt-12 flex flex-col gap-4 sm:gap-6">
                 <input
                   type="text"
                   placeholder="First and last name"
-                  className="w-full rounded-full border-none bg-black/10 px-8 py-5 text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                  className="w-full rounded-full border-none bg-black/10 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
                 />
                 <input
                   type="email"
                   placeholder="Email address"
-                  className="w-full rounded-full border-none bg-black/10 px-8 py-5 text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                  className="w-full rounded-full border-none bg-black/10 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
                 />
                 <input
                   type="tel"
                   placeholder="Contact number"
-                  className="w-full rounded-full border-none bg-black/10 px-8 py-5 text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
+                  className="w-full rounded-full border-none bg-black/10 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base text-white placeholder:text-white/70 placeholder:italic focus:bg-black/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors"
                 />
               </form>
             </div>
@@ -66,30 +66,30 @@ export default function BookingSection() {
             <div className="relative flex-1 max-w-lg lg:ml-auto w-full">
               {/* Dark Blue Backplate */}
               <div
-                className="relative w-full rounded-[3rem] p-6 sm:p-10 pb-24 sm:pb-32 overflow-hidden shadow-2xl"
+                className="relative w-full rounded-[2rem] sm:rounded-[3rem] p-4 sm:p-10 pb-24 sm:pb-32 overflow-hidden shadow-2xl"
                 style={{ backgroundColor: "#0052cc" }}
               >
                 {/* The Calendar UI */}
-                <div className="relative z-10 w-full rounded-3xl bg-white p-6 sm:p-8 shadow-xl select-none">
+                <div className="relative z-10 w-full rounded-2xl sm:rounded-3xl bg-white p-4 sm:p-8 shadow-xl select-none">
                   {/* Calendar Header */}
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-6 sm:mb-8">
                     <button onClick={handlePrevMonth} className="text-gray-400 hover:text-black transition-colors rounded-full p-1 hover:bg-gray-100">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                     </button>
-                    <div className="flex gap-4">
+                    <div className="flex gap-2 sm:gap-4">
                       {/* Month Dropdown */}
                       <div className="relative flex items-center">
                         <select
                           value={month}
                           onChange={(e) => setCurrentDate(new Date(year, parseInt(e.target.value), 1))}
-                          className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-1.5 pr-8 text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors outline-none focus:ring-2 focus:ring-[#0A6EFF]/50"
+                          className="appearance-none rounded-lg border border-gray-200 bg-white px-2 sm:px-3 py-1 sm:py-1.5 pr-6 sm:pr-8 text-xs sm:text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors outline-none focus:ring-2 focus:ring-[#0A6EFF]/50"
                         >
                           {monthNames.map((m, i) => (
                             <option key={m} value={i}>{m}</option>
                           ))}
                         </select>
-                        <div className="pointer-events-none absolute right-2.5 text-gray-500">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div className="pointer-events-none absolute right-2 text-gray-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                       </div>
                       {/* Year Dropdown */}
@@ -97,14 +97,14 @@ export default function BookingSection() {
                         <select
                           value={year}
                           onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value), month, 1))}
-                          className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-1.5 pr-8 text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors outline-none focus:ring-2 focus:ring-[#0A6EFF]/50"
+                          className="appearance-none rounded-lg border border-gray-200 bg-white px-2 sm:px-3 py-1 sm:py-1.5 pr-6 sm:pr-8 text-xs sm:text-sm font-semibold text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors outline-none focus:ring-2 focus:ring-[#0A6EFF]/50"
                         >
                           {Array.from({ length: 21 }, (_, i) => 2020 + i).map(y => (
                             <option key={y} value={y}>{y}</option>
                           ))}
                         </select>
-                        <div className="pointer-events-none absolute right-2.5 text-gray-500">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <div className="pointer-events-none absolute right-2 text-gray-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                         </div>
                       </div>
                     </div>
@@ -114,10 +114,10 @@ export default function BookingSection() {
                   </div>
 
                   {/* Calendar Grid */}
-                  <div className="grid grid-cols-7 gap-y-4 text-center text-sm">
+                  <div className="grid grid-cols-7 gap-y-3 sm:gap-y-4 text-center text-sm">
                     {/* Days of Week */}
                     {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map(day => (
-                      <div key={day} className="text-xs font-semibold text-gray-400 mb-2">{day}</div>
+                      <div key={day} className="text-xs font-semibold text-gray-400 mb-1 sm:mb-2">{day}</div>
                     ))}
                     
                     {/* Empty Slots For Start of Month */}
@@ -132,7 +132,7 @@ export default function BookingSection() {
                         <div key={date} className="flex justify-center items-center">
                           <span
                             onClick={() => handleDateClick(date)}
-                            className={`flex h-8 w-8 items-center justify-center rounded-xl font-medium cursor-pointer transition-colors
+                            className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl text-xs sm:text-sm font-medium cursor-pointer transition-colors
                               ${isSelected ? 'bg-[#211F1F] text-white shadow-md scale-105' : 'text-gray-700 hover:bg-gray-100'}
                             `}
                           >
@@ -145,20 +145,20 @@ export default function BookingSection() {
                     {/* Next Month Dates Padding */}
                     {Array.from({ length: 42 - (firstDayIndex + daysInMonth) }).map((_, i) => (
                       <div key={`next-month-${i}`} className="flex justify-center">
-                        <span className="flex h-8 w-8 items-center justify-center text-gray-300 pointer-events-none">{i + 1}</span>
+                        <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center text-xs sm:text-sm text-gray-300 pointer-events-none">{i + 1}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Make Appointment Button (Inside bottom-left) */}
-                <div className="absolute bottom-6 sm:bottom-10 left-6 right-6 sm:left-10 sm:right-10 z-20">
+                <div className="absolute bottom-5 sm:bottom-10 left-4 right-4 sm:left-10 sm:right-10 z-20">
                   <a
                     href="#book"
-                    className="flex items-center justify-center gap-3 w-full rounded-full bg-white px-6 sm:px-8 py-4 shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                    className="flex items-center justify-center gap-2 sm:gap-3 w-full rounded-full bg-white px-4 sm:px-8 py-3 sm:py-4 shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <span className="text-sm font-bold text-[#0A6EFF]">Make Appointment</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A6EFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A6EFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                   </a>
                 </div>
               </div>

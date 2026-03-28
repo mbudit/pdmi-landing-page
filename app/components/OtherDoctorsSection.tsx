@@ -30,7 +30,7 @@ const otherDoctors = [
 
 export default function OtherDoctorsSection() {
   return (
-    <section className="relative w-full py-16 sm:py-24 min-h-[100dvh] flex flex-col justify-center">
+    <div className="relative w-full pb-16 pt-8 sm:pb-24 sm:pt-12">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ─── Section Header ─── */}
         <div className="mb-10 sm:mb-14">
@@ -152,6 +152,6 @@ export default function OtherDoctorsSection() {
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
