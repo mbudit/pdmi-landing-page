@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -35,8 +36,8 @@ export default function Navbar() {
         fixed top-0 left-0 right-0 z-50
         transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
         ${scrolled
-          ? "bg-nav-bg backdrop-blur-xl border-b border-nav-border shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-          : "bg-transparent"
+          ? "bg-nav-bg backdrop-blur-xl border-b border-nav-border shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+          : "bg-transparent shadow-[0_2px_10px_rgba(0,0,0,0.04)]"
         }
       `}
     >
@@ -47,18 +48,16 @@ export default function Navbar() {
         {/* ─── Logo ─── */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 text-xl font-bold tracking-tight text-foreground
-                     transition-opacity duration-200 hover:opacity-80"
+          className="transition-opacity duration-200 hover:opacity-80"
         >
-          {/* Gradient dot accent */}
-          <span
-            className="inline-block h-7 w-7 rounded-lg"
-            style={{
-              background: "linear-gradient(135deg, var(--accent), #7c3aed)",
-            }}
-            aria-hidden="true"
+          <Image
+            src="/logo-pdmi.png"
+            alt="Perhimpunan Digital Medis Indonesia"
+            width={160}
+            height={40}
+            priority
+            className="h-9 w-auto"
           />
-          <span>PDMI</span>
         </Link>
 
         {/* ─── Desktop Links ─── */}
